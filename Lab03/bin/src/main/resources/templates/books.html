@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sách</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+<h2>📚 Danh sách sách</h2>
+
+<a class="btn btn-add" th:href="@{/books/add}">➕ Thêm sách mới</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tiêu đề</th>
+        <th>Tác giả</th>
+        <th>Giá</th>
+        <th>Thao tác</th>
+    </tr>
+
+    <tr th:each="b : ${books}">
+        <td th:text="${b.id}"></td>
+        <td th:text="${b.title}"></td>
+        <td th:text="${b.author}"></td>
+        <td th:text="${b.price}"></td>
+        <td>
+            <a class="btn btn-edit"
+               th:href="@{/books/edit/{id}(id=${b.id})}">✏️ Sửa</a>
+            <a class="btn btn-delete"
+               th:href="@{/books/delete/{id}(id=${b.id})}">🗑 Xóa</a>
+        </td>
+    </tr>
+</table>
+
+</div>
+
+</body>
+</html>

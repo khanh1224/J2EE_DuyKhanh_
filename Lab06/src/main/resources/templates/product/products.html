@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="product/_layout">
+
+<div layout:fragment="content">
+
+<h3 class="mb-3">📋 Product List</h3>
+
+<!-- 🔐 CHỈ ADMIN -->
+<a sec:authorize="hasRole('ADMIN')"
+   class="btn btn-primary mb-3"
+   th:href="@{/products/create}">
+    Create New Product
+</a>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Category</th>
+
+        <!-- 🔐 CHỈ ADMIN MỚI THẤY -->
+        <th sec:authorize="hasRole('ADMIN')">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:if="${products.size() == 0}">
+        <td colspan="6" class="text-center text-muted">
+            No products found
+        </td>
+    </tr>
+
+    <tr th:each="p : ${products}">
+
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.price}"></td>
+
+        <td>
+            <img th:if="${p.image != null}"
+                 th:src="@{'/images/' + ${p.image}}"
+                 width="100">
+        </td>
+
+        <td th:text="${p.category != null ? p.category.name : 'N/A'}"></td>
+
+        <!-- 🔐 CHỈ ADMIN -->
+        <td sec:authorize="hasRole('ADMIN')">
+
+            <a th:href="@{/products/edit/{id}(id=${p.id})}"
+               class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <a th:href="@{/products/delete/{id}(id=${p.id})}"
+               class="btn btn-danger btn-sm">
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+</div>
+
+</html>

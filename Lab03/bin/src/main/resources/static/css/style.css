@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    padding: 40px;
+}
+
+h2 {
+    color: #2c3e50;
+}
+
+.container {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+}
+
+.btn-add {
+    background: #3498db;
+}
+
+.btn-edit {
+    background: #f39c12;
+}
+
+.btn-delete {
+    background: #e74c3c;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+tr:hover {
+    background: #eaf2f8;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0 12px;
+}
+
+form button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}

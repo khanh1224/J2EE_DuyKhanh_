@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="product/_layout">
+
+<div layout:fragment="content">
+
+<h3 class="mb-3">➕ Add Product</h3>
+
+<form th:action="@{/products/create}"
+      th:object="${product}"
+      method="post"
+      enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label>Name</label>
+        <input th:field="*{name}" class="form-control">
+        <small class="text-danger" th:errors="*{name}"></small>
+    </div>
+
+    <div class="mb-3">
+        <label>Price</label>
+        <input th:field="*{price}" type="number" class="form-control">
+        <small class="text-danger" th:errors="*{price}"></small>
+    </div>
+
+    <div class="mb-3">
+        <label>Image</label>
+        <input type="file" name="imageProduct" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label>Category</label>
+
+        <select th:field="*{category.id}" class="form-select">
+
+            <option value="">-- Select Category --</option>
+
+            <option th:each="c : ${categories}"
+                    th:value="${c.id}"
+                    th:text="${c.name}">
+            </option>
+
+        </select>
+
+    </div>
+
+    <button class="btn btn-success">Save</button>
+
+</form>
+
+</div>
+
+</html>
